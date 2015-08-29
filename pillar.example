@@ -103,3 +103,18 @@ apache:
       - ssl
     disabled:  # List modules to disable
       - rewrite
+    # To configure worker or prefork in RHEL6
+    # prefork:
+    #   startservers: 8
+    #   minspareservers: 5
+    #   maxspareservers: 20
+    #   serverlimit: 256
+    #   maxclients: 256
+    # worker:
+    #   startservers: 4
+    #   maxclients: 300
+    #   minsparethreads: 25
+    #   maxsparethreads: 75
+    #   threadsperchild: 25
+    #   maxrequestsperchild: 0
+
