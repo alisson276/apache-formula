@@ -53,7 +53,9 @@ Listen 80
 # Example:
 # LoadModule foo_module modules/mod_foo.so
 #
-Include conf.modules.d/*.conf
+{%- for module in salt['pillar.get']('apache:modules:enabled', []) %}
+LoadModule {{ module }}_module modules/mod_{{ module }}.so
+{%- endfor %}
 
 #
 # If you wish httpd to run as a different user or group, you must run
@@ -353,5 +355,5 @@ EnableSendfile on
 # Supplemental configuration
 #
 # Load config files in the "/etc/httpd/conf.d" directory, if any.
-IncludeOptional conf.d/*.conf
-IncludeOptional vhosts.d/*.conf
+Include conf.d/*.conf
+Include vhosts.d/*.conf
